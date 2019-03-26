@@ -1,15 +1,3 @@
-// function set_headers() {
-//     // headers['Authorization'] = storage.token; <- pseudocode
-//     var player_id = localStorage.getItem("player_id");
-//     var token = localStorage.getItem("token");
-//     // axios.defaults.headers.common['player_id'] = player_id;
-//     // axios.defaults.headers.common['Authorization'] = token;
-//     axios.defaults.headers.common = {
-//         'Authorization': token,
-//         "player_id": player_id
-//     };
-// }
-
 new Vue({
   el: '#app',
   data () {
@@ -41,7 +29,7 @@ new Vue({
 
             }}
         )
-        .then(response => (this.info = response.data))
-        .catch(error => {console.log(error)})
+        .then(response => {(this.info = response.data), console.log(response)}
+    ).catch(error => {console.log(error)})
   }
 })
