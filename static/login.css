@@ -24,6 +24,12 @@ h1 {
   margin-bottom: 10px;
 
 }
+.message {
+  color: blue;
+  margin-bottom: 10px;
+  text-shadow: 0 .05rem .05rem rgba(0, 0, 0, 0);
+
+}
 
 .form-signin {
   width: 100%;

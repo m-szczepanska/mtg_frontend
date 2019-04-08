@@ -46,8 +46,8 @@ const app = new Vue({
           response => {store_token_helper_and_redirect(response)
           console.log('jest tu')}
       ).catch(error => {
-        console.log(error)
-        this.errored = true
+        console.log(error.response.data['non_field_errors'][0])
+        this.errored = error.response.data['non_field_errors'][0]
       })
       e.preventDefault();
     }
