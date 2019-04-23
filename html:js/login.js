@@ -9,7 +9,7 @@ function store_token_helper_and_redirect(response) {
       localStorage.setItem("player_id", player_id_value);
       set_headers();
       console.log(response.headers);
-      window.location.href = "history.html"
+      window.location.href = "current_tours.html"
     } else {
       console.log("bad browser no storage")
     }

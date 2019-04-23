@@ -2,7 +2,8 @@ new Vue({
   el: '#app',
   data () {
     return {
-      info: null
+      info: null,
+      link: 'file:///Users/marsza/workspace/mtg_frontend/html:js/reset_password_request.html'
     }
   },
   filters: {
@@ -16,9 +17,11 @@ new Vue({
       return second_part
   }
 
+
 },
   mounted () {
       player_id = localStorage.getItem("player_id")
+
       console.log(`http://localhost:8000/events/players/${player_id}/player_history/`)
       axios
         .get(

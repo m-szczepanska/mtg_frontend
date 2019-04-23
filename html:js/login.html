@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <link rel="stylesheet" href="../static/login.css">
+        <link rel="stylesheet" href="../static/style.css">
         <title>Login</title>
     </head>
     <body>
@@ -38,7 +38,9 @@
             class="form-control"
             placeholder="Password" required>
           </p>
-          <button type="submit" name="button">Submit</button>
+          <button class='btn btn-login' type="submit" name="button">Log in</button>
+          <a class="btn btn-dark" href="file:///Users/marsza/workspace/mtg_frontend/html:js/reset_password_request.html" role="button">Change password</a><br>
+          <a class='btn btn-register btn-block' href="file:///Users/marsza/workspace/mtg_frontend/html:js/register_request.html" role="button">Register</a>
 
         </form>
         <script src="login.js"></script>

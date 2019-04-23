@@ -10,8 +10,35 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">MTG Tours</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarsExample06">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/logout.html">Logout</a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+
         <div id="app">
             <div class="container">
+                <!-- <a target="_blank" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Change your data</a>
+                <a target="_blank" href="file:///Users/marsza/workspace/mtg_frontend/html:js/logout.html">Logout</a> -->
                 <h1>Player History</h1>
 
             <div v-for="el in info">
@@ -25,7 +52,7 @@
                     <div class="col-md-2 main-grid-his">
                     IS FINISHED: {{ el.is_finished }}</div>
                     <div class="col-md main-grid-his">
-                    Details</div>
+                    <a class="btn btn-info" href=v-html="link" role="button">Details</a></div>
                 </div>
 
             </div> <!-- /container -->
