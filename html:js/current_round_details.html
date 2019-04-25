@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../static/style.css">
-        <title>Tournament details</title>
+        <title>Current match details</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
@@ -37,25 +37,25 @@
         </nav>
 
         <div id="app">
-            {{info }}
-
-            <!-- <div class="container">
+            <div class="container">
                 <h1>Pairings</h1>
-                <h2>Tournament id: {{ this.tournament_id }}, round
-                    {{ this.current_player_match.round || this.current_player_match_finished.round }}</h2>
+                <h2 v-if='current_player_match'>Tournament id: {{ this.tournament_id }}
+                    ,round {{ this.current_player_match.round }}</h2>
+                <h2 v-else>Tournament id: {{ this.tournament_id }}, round
+                    {{ this.current_player_match_finished.round }}</h2>
 
               <div v-if="current_player_match">
                 <div class="make_this_like_v-for-el in info">
 
                 <div class="row md">
                     <div class="col-md main-grid-match">
-                    player_1_id</div>
+                    player 1 name</div>
                     <div class="col-md main-grid-match">
-                    player_2_id</div>
+                    player 2 name</div>
                     <div class="col-md main-grid-match">
-                    player_1_score</div>
+                    player 1 score</div>
                     <div class="col-md main-grid-match">
-                    player_2_score</div>
+                    player 2 score</div>
                     <div class="col-md main-grid-match">
                     draws</div>
                     <div class="col-md main-grid-match">
@@ -67,9 +67,9 @@
                           @submit="submitScore"
                           method="put">
                     <div class="col-md the-grid-col">
-                        {{ current_player_match.player_1_id }}</div>
+                        {{ current_player_match.player_1_name }}</div>
                     <div class="col-md the-grid-col">
-                        {{ current_player_match.player_2_id }}</div>
+                        {{ current_player_match.player_2_name }}</div>
                     <div class="col-md the-grid-col">
                         <input
                         type="number"
@@ -102,13 +102,13 @@
 
                 <div class="row md">
                     <div class="col-md main-grid-match">
-                    player_1_id</div>
+                    player 1 name</div>
                     <div class="col-md main-grid-match">
-                    player_2_id</div>
+                    player 2 name</div>
                     <div class="col-md main-grid-match">
-                    player_1_score</div>
+                    player 1 score</div>
                     <div class="col-md main-grid-match">
-                    player_2_score</div>
+                    player 2 score</div>
                     <div class="col-md main-grid-match">
                     draws</div>
                     <div class="col-md main-grid-match">
@@ -117,9 +117,9 @@
 
                 <div class="row mb-2">
                     <div class="col-md the-grid-col">
-                        {{ current_player_match_finished.player_1_id }}</div>
+                        {{ current_player_match_finished.player_1_name }}</div>
                     <div class="col-md the-grid-col">
-                        {{ current_player_match_finished.player_2_id }}</div>
+                        {{ current_player_match_finished.player_2_name }}</div>
                     <div class="col-md the-grid-col">
                         {{ current_player_match_finished.player_1_score }}</div>
                     <div class="col-md the-grid-col">
@@ -138,26 +138,26 @@
 
             <div v-for="el in info">
 
-                <div class="row md">
+                <!-- <div class="row md">
                     <div class="col-md main-grid-match">
-                    player_1_id</div>
+                    player 1 name</div>
                     <div class="col-md main-grid-match">
-                    player_2_id</div>
+                    player 2 name</div>
                     <div class="col-md main-grid-match">
-                    player_1_score</div>
+                    player 1 score</div>
                     <div class="col-md main-grid-match">
-                    player_2_score</div>
+                    player 2 score</div>
                     <div class="col-md main-grid-match">
                     draws</div>
                     <div class="col-md main-grid-match">
                     </div>
-                </div>
+                </div> -->
 
                     <div class="row mb-2">
                     <div class="col-md the-grid-col">
-                        {{ el.player_1_id }}</div>
+                        {{ el.player_1_name }}</div>
                     <div class="col-md the-grid-col">
-                        {{ el.player_2_id }}</div>
+                        {{ el.player_2_name }}</div>
                     <div class="col-md the-grid-col">
                         {{ el.player_1_score }}</div>
                     <div class="col-md the-grid-col">
@@ -169,12 +169,12 @@
                 </div>
 
             </div>
-            </div> -->
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="tour_details.js"></script>
+        <script src="current_round_details.js"></script>
     </body>
 </html>
 
