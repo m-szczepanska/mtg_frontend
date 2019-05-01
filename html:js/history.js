@@ -2,8 +2,7 @@ new Vue({
   el: '#app',
   data () {
     return {
-      info: null,
-      link: 'file:///Users/marsza/workspace/mtg_frontend/html:js/reset_password_request.html'
+      info: null
     }
   },
   filters: {
@@ -28,11 +27,16 @@ new Vue({
             `http://localhost:8000/events/players/${player_id}/player_history/`,  // string formatting, swap 9 for player_id
             {
                 headers: {
-                    'Authorization': String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token"),
-
-            }}
-        )
-        .then(response => {(this.info = response.data), console.log(response)}
-    ).catch(error => {console.log(error)})
+                    'Authorization': String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token")
+                }
+            }
+        ).then(response => {(this.info = response.data), console.log(response)}
+        ).then(response => {var reply_click = function() {
+                window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${this.id}`}
+                var buttons = document.querySelectorAll(".btn")
+                for (i = 0; i < buttons.length; i++) {
+                    buttons[i].onclick = reply_click;
+                }}
+        ).catch(error => {console.log(error)})
   }
 })

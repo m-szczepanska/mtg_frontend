@@ -11,7 +11,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">MTG Tours</a>
+          <a class="navbar-brand" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">MTG Tours</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,6 +22,9 @@
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">Create tournament</a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -37,22 +40,21 @@
 
         <div id="app">
             <div class="container">
-                <!-- <a target="_blank" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Change your data</a>
-                <a target="_blank" href="file:///Users/marsza/workspace/mtg_frontend/html:js/logout.html">Logout</a> -->
                 <h1>Player History</h1>
 
             <div v-for="el in info">
                 <div class="row md">
                     <div class="col-md-3 main-grid-his">
-                    TOUR NAME: {{el.name}}</div>
+                        TOUR NAME: {{el.name}}</div>
                     <div class="col-md-4 main-grid-his">
-                    DATE: {{ el.date_beginning | data_formated }}- {{ el.date_ending | data_formated }}</div>
+                        DATE: {{ el.date_beginning | data_formated }} -
+                        {{ el.date_ending | data_formated }}</div>
                     <div class="col-md main-grid-his">
-                    Score: {{ el.score }}</div>
+                        Score: {{ el.score }}</div>
                     <div class="col-md-2 main-grid-his">
-                    IS FINISHED: {{ el.is_finished }}</div>
+                        IS FINISHED: {{ el.is_finished }}</div>
                     <div class="col-md main-grid-his">
-                    <a class="btn btn-info" href=v-html="link" role="button">Details</a></div>
+                        <button class="btn btn-info" :id=el.id onClick="reply_click(this.id)">Details</button></div>
                 </div>
 
             </div> <!-- /container -->

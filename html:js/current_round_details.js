@@ -1,4 +1,6 @@
 function find_current_player_match(response, vue_instance) {
+    standings = response.data.standings
+    console.log('standings', standings)
     current_round = response.data.current_round;
     console.log(response.data.current_round);
     player_id = localStorage.getItem("player_id");
@@ -29,6 +31,7 @@ function find_current_player_match(response, vue_instance) {
     // console.log("match", player_match);
     // console.log("round", current_round);
     vue_instance.info = current_round;
+    vue_instance.standings = standings;
 };
 
 
@@ -44,6 +47,7 @@ new Vue({
       draws: null,
       link_match_id: null,
       tournament_id: null,
+      standings: null
     }
   },
   mounted () {

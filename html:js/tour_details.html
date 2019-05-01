@@ -12,7 +12,7 @@
     <body>
 
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">MTG Tours </a>
+          <a class="navbar-brand" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">MTG Tours </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,8 +21,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">Create tournament</a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -37,7 +40,51 @@
         </nav>
 
         <div id="app">
-            {{info }}
+            <div class="container">
+                <h1>Past rounds details</h1>
+                <h2>{{ info.name }} tournament</h2>
+            <div v-for="num in this.past_rounds_nums">
+                <p>
+                    <button class="btn btn-standings btn-block " type="button"
+                    data-toggle="collapse" aria-expanded="false"
+                    :data-target="'#collapse_' + num"
+                    :aria-controls="'collapse_' + num"> Round {{num}}
+                    </button>
+                </p>
+                <div class="collapse" :id="'collapse_' + num">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-2 main-grid-match">
+                        player 1 name</div>
+                        <div class="col-md-2 main-grid-match">
+                        player 2 name</div>
+                        <div class="col-md-2 main-grid-match">
+                        player 1 score</div>
+                        <div class="col-md-2 main-grid-match">
+                        player 2 score</div>
+                        <div class="col-md-2 main-grid-match">
+                        draws</div>
+                    </div>
+                    <div v-for='el in this.past_rounds_list'>
+                        <div v-if='el.round == num'>
+                            <div class="row justify-content-md-center">
+                                <div class="col-md-2 the-grid-col">
+                                    {{ el.player_1_name}}</div>
+                                <div class="col-md-2 the-grid-col">
+                                    {{ el.player_2_name}}</div>
+                                <div class="col-md-2 the-grid-col">
+                                    {{ el.player_1_score }}</div>
+                                <div class="col-md-2 the-grid-col">
+                                    {{ el.player_2_score }}</div>
+                                <div class="col-md-2 the-grid-col">
+                                    {{ el.draws }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <!-- {{info.standings }} -->
 
             <!-- <div class="container">
                 <h1>Pairings</h1>

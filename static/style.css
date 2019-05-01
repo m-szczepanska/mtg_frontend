@@ -63,9 +63,15 @@ body {
 .the-grid-col {
     padding-top: 15px;
     padding-bottom: 15px;
-    margin-bottom: 2.5rem;
+    /* margin-bottom: 2.5rem; */
     background-color: #8C92A9;
     /* border: 1px solid #131728; */
+}
+
+.collapse-standings {
+    align-items: center;
+    margin-bottom: 20px;
+
 }
 
 .login {
@@ -80,7 +86,14 @@ h1 {
 
 h2 {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #054b77;
+}
+
+h3 {
+    margin-top: 60px;
+    margin-bottom: 30px;
     text-align: center;
     color: #116488;
 }
@@ -103,6 +116,21 @@ a {
     border-color: #116488;
     font-size: 0.9em;
 }
+
+.btn-standings {
+    margin-top: 60px;
+    color: #fff;
+    background-color: #116488d4;
+    border-color: #116488;
+    font-size: 1.1em;
+}
+
+.btn-standings:hover {
+    color: #fff;
+    background-color: #0d5979;
+    border-color: #0d5979;
+}
+
 .btn-login {
     color: #fff;
     background-color: #116488;
@@ -128,7 +156,11 @@ a {
 }
 
 .mb-3, .my-3 {
-    margin-bottom: 1.5rem!important;
+    margin-bottom: 0; /*1.5rem!important;'*/
+}
+
+.mb-2, .my-2 {
+    margin-bottom: 0!important;
 }
 
 .btn-register {

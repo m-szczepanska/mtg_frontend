@@ -30,32 +30,14 @@ new Vue({
 
             }}
     ).then(response => {(this.info = response.data)}
-    // ).then(response => {redirect_helper()}
-    ).then(response => {  // this does basically the same thing as redirect_helper, just wanted to try .onclick
-            console.log('tu doszlo')
-            var reply_click = function() {
-                window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${this.id}`}
+    ).then(response => {if (!Array.isArray(this.info)) {this.info = [this.info]}}
+    ).then(response => {var reply_click = function() {
+                window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/current_round_details.html?tour_id=${this.id}`}
             var buttons = document.querySelectorAll(".btn")
             for (i = 0; i < buttons.length; i++) {
-                buttons[i].onclick = reply_click;
+                buttons[i].onclick = reply_click}
             }
-
-            // buttons[1].onclick = function() {
-            //     button = buttons[1]
-            //     console.log(button.id)
-            //     window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${button.id}`
-            // };
-            // buttons[2].onclick = function() {
-            //     button = buttons[2]
-            //     console.log(button.id)
-            //     window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${button.id}`
-            // };
-                // console.log(button);
-                // button.onclick = function() {
-                //     console.log(buttons)
-                //     // window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${button.id}`
-                // };
-        }).catch(error => {console.log(error)})
+        ).catch(error => {console.log(error)})
   }
 })
 
