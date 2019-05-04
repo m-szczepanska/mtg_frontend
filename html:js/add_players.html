@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="../static/style.css">
-        <title>Player History</title>
+        <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+        <script src="https://unpkg.com/vue-select@3.0.0"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="../static/style.css">
+        <title>Create tournament</title>
     </head>
     <body>
-
         <nav class="navbar navbar-expand navbar-dark bg-dark">
           <a class="navbar-brand" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">MTG Tours </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -26,7 +27,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/create_tournament.html">Create tournament</a>
               </li>
               <li class="nav-item active">
@@ -47,36 +48,47 @@
           </div>
         </nav>
 
-        <div id="app">
             <div class="container">
-                <h1>Player History</h1>
 
-            <div v-for="el in info">
-                <div class="row md">
-                    <div class="col-md-3 main-grid-his">
-                        TOUR NAME: {{el.name}}</div>
-                    <div class="col-md-4 main-grid-his">
-                        DATE: {{ el.date_beginning | data_formated }} -
-                        {{ el.date_ending | data_formated }}</div>
-                    <div class="col-md main-grid-his">
-                        Score: {{ el.score }}</div>
-                    <div class="col-md-2 main-grid-his">
-                        IS FINISHED: {{ el.is_finished }}</div>
-                    <div class="col-md main-grid-his">
-                        <button class="btn btn-info" :id=el.id onClick="reply_click(this.id)">Details</button></div>
-                </div>
+                <form class="form-add-players"
+                    id="app"
+                    @submit="selectForm"
+                    method="post">
 
-            </div> <!-- /container -->
-                <!-- <li v-for="key, value in info" class="el" v-if= 'value !== "players"' >
-                    {{ value }}: {{ key }}<br>
-                </li>
-                <li v-for="key, value in info" class="el" v-else-if= 'value === "current_round"' >
-                    {{ value }}: {{ key[0] }}<br> -->
-          </div>
-         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="history.js"></script>
-    </body>
+                    <section class=error v-if="errored">
+                      <p>{{ errored }} </p>
+                    </section>
+                    <section class=message v-if="correct">
+                      <p>Changes have been saved</p>
+                    </section>
+
+                    <p>Select tournament<p>
+                        <v-select
+                            v-model="tournament"
+                            :options="tournaments"
+                            :reduce="name => name.id"
+                            label="name"></v-select>
+                    <!-- <p>Select tournament<p>
+                    <select class="form-control" id="FormControlSelect1">
+                        <option v-for="tour in tournaments">{{tour.name}}</option>
+                    </select> -->
+
+                    <p>Select players to add to tournament<p>
+                        <v-select multiple
+                        v-model="player_ids"
+                        :options="players"
+                        :reduce="full_name => full_name.id"
+                        label="full_name"></v-select>
+                    <button class="btn-save btn btn-primary btn-sm">Save</button>
+                </form>
+
+            </div>
+        </div>
+
+        <script src="add_players.js"></script>
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+   </body>
 </html>
