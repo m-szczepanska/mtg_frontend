@@ -33,28 +33,16 @@ new Vue({
     ).then(response => {if (!Array.isArray(this.info)) {this.info = [this.info]}}
     ).then(response => {var reply_click = function() {
                 window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/current_round_details.html?tour_id=${this.id}`}
-            var buttons = document.querySelectorAll(".btn")
+            var buttons = document.querySelectorAll(".btn-info")
             for (i = 0; i < buttons.length; i++) {
                 buttons[i].onclick = reply_click}
-            }
-        ).catch(error => {console.log(error)})
-  }
+                    }
+    // ).then(response => {var drop_click = function() {
+    //                 window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/drop_from_tour.html?tour_id=${this.id}`}
+    //             var buttons = document.querySelectorAll(".btn-danger")
+    //             for (i = 0; i < buttons.length; i++) {
+    //                 buttons[i].onclick = drop_click}
+    //                 }
+  ).catch(error => {console.log(error)})
+}
 })
-
-
-// for (i = 0, len = response.length; i <= len; i++) {
-// const tour_id = document.getElementById("tour_id").innerHTML;
-// document.getElementById("myButton").addEventListener("click", function(e) {
-//     window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${tour_id}`})
-// console.log('tutaj tez');
-// }};
-
-
-// for (i = 0; i < buttons.length; i++) {
-//     function reply_click(clicked_id)
-//     {
-//         alert(clicked_id);
-//     }
-//     console.log('buttonsy', buttons[i]);
-//     buttons[i].onclick = function() {
-//         console.log()

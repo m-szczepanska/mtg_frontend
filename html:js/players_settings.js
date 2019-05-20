@@ -1,4 +1,4 @@
-function find_current_player_match(response, vue_instance) {
+function find_player_details(response, vue_instance) {
     first_name = response.data.first_name
     last_name = response.data.last_name
     email = response.data.email
@@ -30,7 +30,7 @@ const app = new Vue({
                             String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token")
                     )
             }}
-    ).then(response => {(find_current_player_match(response, this)), console.log(this.info)}
+    ).then(response => {(find_player_details(response, this)), console.log(this.info)}
     ).catch(error => {console.log(error)})
   },
   methods:{

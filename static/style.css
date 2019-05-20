@@ -141,6 +141,15 @@ a {
     border-color: #116488;
     font-size: 0.9em;
 }
+.btn-danger {
+    margin-top: 0px;
+    padding: .3rem .8rem;
+    line-height: 1;
+    font-size: 1em;
+}
+.btn-dark {
+    font-size: 0.9em;
+}
 
 .btn-standings {
     margin-top: 60px;

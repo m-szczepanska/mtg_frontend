@@ -20,17 +20,20 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarsExample06">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/create_tournament.html">Create tournament</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/invite_player.html">Invite new player</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/add_players.html">Add players to tour</a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -38,7 +41,7 @@
                   <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/logout.html">Logout</a>
+                    <a class="nav-link" href=# onclick="remove_token()" id="logout_link">Logout</a>
                 </li>
             </ul>
           </div>
@@ -48,10 +51,11 @@
             <div class="container">
 
                 <h1>Pairings</h1>
-                <h2 v-if='current_player_match'>Tournament id: {{ this.tournament_id }}
+                <h2 v-if='current_player_match'>Tournament id: {{ this.current_player_match.tournament_id }}
                     ,round {{ this.current_player_match.round }}</h2>
-                <h2 v-else>Tournament id: {{ this.tournament_id }}, round
+                <h2 v-else-if='current_player_match_finished'>Tournament id: {{ this.current_player_match_finished.tournament_id }}, round
                     {{ this.current_player_match_finished.round }}</h2>
+                <h3 v-else> No current matches in the tournament</h2>
 
               <div v-if="current_player_match">
                 <div class="make_this_like_v-for-el in info">
@@ -123,7 +127,6 @@
                     <div class="col-md main-grid-match">
                     Change score </div>
                 </div>
-
                 <div class="row mb-2">
                     <div class="col-md the-grid-col">
                         {{ current_player_match_finished.player_1_name }}</div>
@@ -137,31 +140,51 @@
                         {{ current_player_match_finished.draws }}</div>
                     <div class="col-md the-grid-col">
                         <button class="btn btn-info" id='myButton' v-on:click="changeScore">
-                            Details
+                            Change score
+<!--
+                            <button class="btn btn-info" onClick="reply_click()">Details</button> -->
                         </button>
                     </div>
                 </div>
 
+                <!-- <form class="row"
+                     id="app"
+                      @submit="changeScore"
+                      method="put">
+                <div class="col-md the-grid-col">
+                    {{ current_player_match_finished.player_1_name }}</div>
+                <div class="col-md the-grid-col">
+                    {{ current_player_match_finished.player_2_name }}</div>
+                <div class="col-md the-grid-col">
+                    <input
+                    type="number"
+                    class="form-control"
+                    v-model="player_1_score"
+                    :placeholder="player_1_score"></div>
+                <div class="col-md-2 the-grid-col">
+                    <input
+                    type="number"
+                    class="form-control"
+                    v-model="player_2_score"
+                    :placeholder="player_2_score"></div>
+                <div class="col-md the-grid-col">
+                    <input
+                    type="number"
+                    class="form-control"
+                    v-model="draws"
+                    :placeholder="draws"></div>
+                <div class="col-md the-grid-col">
+                    <button class="btn btn-info" type="submit" name="button">
+                        Change
+                </button>
                 </div>
+                </form> -->
+                </div>
+
+
             </div>
 
             <div v-for="el in info">
-
-                <!-- <div class="row md">
-                    <div class="col-md main-grid-match">
-                    player 1 name</div>
-                    <div class="col-md main-grid-match">
-                    player 2 name</div>
-                    <div class="col-md main-grid-match">
-                    player 1 score</div>
-                    <div class="col-md main-grid-match">
-                    player 2 score</div>
-                    <div class="col-md main-grid-match">
-                    draws</div>
-                    <div class="col-md main-grid-match">
-                    </div>
-                </div> -->
-
                     <div class="row mb-2">
                     <div class="col-md the-grid-col">
                         {{ el.player_1_name }}</div>
@@ -175,7 +198,6 @@
                         {{ el.draws }}</div>
                     <div class="col-md the-grid-col"></div>
                 </div>
-
             </div>
 
             <p>
@@ -186,13 +208,18 @@
             </p>
             <div class="collapse" id="collapseExample">
                 <div class="row justify-content-md-center">
+                    <div class="col-md-1 main-grid-match">
+                    No.</div>
                     <div class="col-md-4 main-grid-match">
                     player name</div>
                     <div class="col-md-2 main-grid-match">
                     player score</div>
+
                 </div>
-                    <div v-for="el in standings" >
+                    <div v-for="el in standings">
                     <div class="row justify-content-md-center">
+                        <div class="col-md-1 the-grid-col">
+                            {{ el.order }}</div>
                         <div class="col-md-4 the-grid-col">
                             {{ el.first_name }} {{ el.last_name }}</div>
                         <div class="col-md-2 the-grid-col">
@@ -206,6 +233,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="current_round_details.js"></script>
+        <script src="logout.js"></script>
     </body>
 </html>
 

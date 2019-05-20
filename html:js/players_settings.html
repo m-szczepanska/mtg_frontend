@@ -26,19 +26,22 @@
               <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/create_tournament.html">Create tournament</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/invite_player.html">Invite new player</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/add_players.html">Add players to tour</a>
+              </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/logout.html">Logout</a>
+                    <a class="nav-link" href=# onclick="remove_token()" id="logout_link">Logout</a>
                 </li>
             </ul>
           </div>
@@ -64,16 +67,16 @@
             class="form-control"
             id="inputName"
             v-bind:placeholder='first_name' required autofocus>
-            </p>
-            <p>
-              <label for="inputName" class="sr-only">Last name</label>
-              <input
-              type="text"
-              v-model="last_name"
-              class="form-control"
-              id="inputName"
-              :placeholder='last_name' required autofocus>
-              </p>
+          </p>
+          <p>
+            <label for="inputName" class="sr-only">Last name</label>
+            <input
+            type="text"
+            v-model="last_name"
+            class="form-control"
+            id="inputName"
+            :placeholder='last_name' required autofocus>
+          </p>
           <p>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input
@@ -87,9 +90,10 @@
           <a class="btn btn-dark" href="file:///Users/marsza/workspace/mtg_frontend/html:js/reset_password_request.html" role="button">Change password</a>
         </form>
 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="players_settings.js"></script>
-       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="logout.js"></script>
    </body>
 </html>

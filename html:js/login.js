@@ -34,7 +34,6 @@ const app = new Vue({
   },
   methods:{
     checkForm: function (e) {
-        console.log(this.email, this.password);
         axios.post(
             'http://localhost:8000/events/login/',
             {email: this.email, password: this.password},
@@ -43,8 +42,7 @@ const app = new Vue({
             }
           }
       ).then(
-          response => {store_token_helper_and_redirect(response)
-          console.log('jest tu')}
+          response => {store_token_helper_and_redirect(response)}
       ).catch(error => {
         console.log(error.response.data['non_field_errors'][0])
         this.errored = error.response.data['non_field_errors'][0]
