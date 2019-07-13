@@ -1,8 +1,9 @@
 function find_current_player_match(response, vue_instance) {
     standings = response.data.standings
     console.log('caly res', response.data)
+    console.log('standings', standings)
     current_round = response.data.current_round;
-    console.log(response.data.current_round);
+    console.log('current_round', response.data.current_round);
     player_id = localStorage.getItem("player_id");
     for ( var i=0; i < current_round.length; i++ ) {
         if (
@@ -16,7 +17,6 @@ function find_current_player_match(response, vue_instance) {
         };
     };
     console.log('index', index);
-    console.log('current r', current_round[0])
     player_match = current_round.splice(index, 1)[0];  // "pop(index)"
     if ( player_match.is_finished == false ) {
         vue_instance.current_player_match = player_match;
@@ -28,13 +28,8 @@ function find_current_player_match(response, vue_instance) {
     console.log('current round', current_round);
     vue_instance.link_match_id = player_match.id;
     vue_instance.tournament_id = match_tournament_id;
-    // console.log("index", index);
-    // console.log("match", player_match);
-    // console.log("round", current_round);
     vue_instance.info = current_round;
     vue_instance.standings = standings;
-    // vue_instance.current_round = current_round;
-
 };
 
 
@@ -51,17 +46,16 @@ new Vue({
       link_match_id: null,
       tournament_id: null,
       standings: null,
-      // current_round: null
     }
   },
   mounted () {
       const urlParams = new URLSearchParams(window.location.search);
       const tour_id = urlParams.get('tour_id');
 
-      console.log(`http://localhost:8000/events/tournaments/${tour_id}/`)
+      console.log(`http://testserver:8000/events/tournaments/${tour_id}/`)
       axios
         .get(
-            `http://localhost:8000/events/tournaments/${tour_id}/`,  // string formatting, swap 9 for player_id
+            `http://testserver:8000/events/tournaments/${tour_id}/`,  // string formatting, swap 9 for player_id
             {
                 headers: {
                     'Authorization': (
@@ -73,12 +67,12 @@ new Vue({
   },
   methods: {
       changeScore: function (e) {
-          window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/update_current_round.html?tour_id=${this.tournament_id}&match_id=${this.link_match_id}`
+          window.location.href =`update_current_round.html?tour_id=${this.tournament_id}&match_id=${this.link_match_id}`
           e.preventDefault();
       },
     submitScore: function (e) {
         axios.put(
-            `http://localhost:8000/events/tournaments/${this.tournament_id}/matches/${this.link_match_id}/`,
+            `http://testserver:8000/events/tournaments/${this.tournament_id}/matches/${this.link_match_id}/`,
             {
                     player_1_score: this.player_1_score,
                     player_2_score: this.player_2_score,
@@ -89,7 +83,7 @@ new Vue({
                     'Authorization': String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token"),
             }
           }
-      ).then(response => {window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/current_round_details.html?tour_id=${this.tournament_id}`}
+      ).then(response => {window.location.href =`current_round_details.html?tour_id=${this.tournament_id}`}
       ).catch(error => {console.log(error)})
 
     e.preventDefault();}

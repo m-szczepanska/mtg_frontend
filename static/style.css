@@ -100,13 +100,7 @@ body {
 h1 {
     margin-top: 20px;
     margin-bottom: 20px;
-}
-
-.invite_player {
-    margin-top: 20px;
-    margin-bottom: 20px;
     font-weight: 400;
-    text-align: center;
 }
 
 h2 {
@@ -197,11 +191,30 @@ a {
     margin-bottom: 0!important;
 }
 
+.invite_player {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
 .btn-register {
     margin-top: 25px;
     color: #fff;
     background-color: #378b98;
     border-color: #22565e;
+}
+
+.form-add-players-h1 {
+    text-align: center;
+    font-weight: 400;
+}
+
+.form-add-players {
+    width: 100%;
+    max-width: 330px;
+    padding-top: 50px;
+    margin: auto;
 }
 
 .form-signin {

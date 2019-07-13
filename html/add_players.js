@@ -12,14 +12,14 @@ const app = new Vue({
   },
   mounted () {
       player_id = localStorage.getItem("player_id")
-      console.log(`http://localhost:8000/events/players/${player_id}/`)
+      console.log(`http://testserver:8000/events/players/${player_id}/`)
       axios.all([
-        axios.get('http://localhost:8000/events/players/',
+        axios.get('http://testserver:8000/events/players/',
             {headers:
               {'Authorization': (
                 String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token"))}
             }),
-        axios.get('http://localhost:8000/events/tournaments/')]
+        axios.get('http://testserver:8000/events/tournaments/')]
       ).then(axios.spread(
           (playersRes, toursRes) => {(this.players = playersRes.data), (this.tournaments = toursRes.data), (console.log(this.players, this.tournaments))}
       )).catch(error => {console.log(error)})
@@ -28,7 +28,7 @@ const app = new Vue({
     selectForm: function (e) {
         tournament = this.tournament
         axios.post(
-            `http://localhost:8000/events/tournaments/${tournament}/add_players/`,
+            `http://testserver:8000/events/tournaments/${tournament}/add_players/`,
             { player_ids: this.player_ids }
       ).catch(error => {
             console.log(error.response)

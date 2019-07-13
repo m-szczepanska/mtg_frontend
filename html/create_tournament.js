@@ -10,7 +10,7 @@ const app = new Vue({
   methods:{
     checkForm: function (e) {
         axios.post(
-            'http://localhost:8000/events/tournaments/',
+            'http://testserver:8000/events/tournaments/',
             {
                 name: this.tour_name,
                 date_beginning: this.date_beginning,

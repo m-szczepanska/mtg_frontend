@@ -20,29 +20,26 @@ new Vue({
   mounted () {
       player_id = localStorage.getItem("player_id")
 
-      console.log(`http://localhost:8000/events/players/${player_id}/current_tournaments/`)
+      console.log(`http://testserver:8000/events/players/${player_id}/current_tournaments/`)
       axios
         .get(
-            `http://localhost:8000/events/players/${player_id}/current_tournaments/`,
+            `http://testserver:8000/events/players/${player_id}/current_tournaments/`,
             {
                 headers: {
                     'Authorization': String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token"),
 
             }}
-    ).then(response => {(this.info = response.data)}
+    ).then(response => {(this.info = response.data), console.log(this.info[0])}
     ).then(response => {if (!Array.isArray(this.info)) {this.info = [this.info]}}
+    ).then(response => {if (this.info.length < 2)
+        { var tournament_id = this.info[0].id;
+        window.location.href =`current_round_details.html?tour_id=${tournament_id}`}}
     ).then(response => {var reply_click = function() {
-                window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/current_round_details.html?tour_id=${this.id}`}
+                window.location.href =`current_round_details.html?tour_id=${this.id}`}
             var buttons = document.querySelectorAll(".btn-info")
             for (i = 0; i < buttons.length; i++) {
                 buttons[i].onclick = reply_click}
-                    }
-    // ).then(response => {var drop_click = function() {
-    //                 window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/drop_from_tour.html?tour_id=${this.id}`}
-    //             var buttons = document.querySelectorAll(".btn-danger")
-    //             for (i = 0; i < buttons.length; i++) {
-    //                 buttons[i].onclick = drop_click}
-    //                 }
+            }
   ).catch(error => {console.log(error)})
 }
 })

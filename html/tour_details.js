@@ -27,10 +27,10 @@ new Vue({
       const urlParams = new URLSearchParams(window.location.search);
       const tour_id = urlParams.get('tour_id');
 
-      console.log(`http://localhost:8000/events/tournaments/${tour_id}/`)
+      console.log(`http://testserver:8000/events/tournaments/${tour_id}/`)
       axios
         .get(
-            `http://localhost:8000/events/tournaments/${tour_id}/`,  // string formatting, swap 9 for player_id
+            `http://testserver:8000/events/tournaments/${tour_id}/`,  // string formatting, swap 9 for player_id
             {
                 headers: {
                     'Authorization': (

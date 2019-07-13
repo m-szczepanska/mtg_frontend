@@ -20,10 +20,10 @@ const app = new Vue({
   },
   mounted () {
       player_id = localStorage.getItem("player_id")
-      console.log(`http://localhost:8000/events/players/${player_id}/`)
+      console.log(`http://testserver:8000/events/players/${player_id}/`)
       axios
         .get(
-            `http://localhost:8000/events/players/${player_id}/`,  // string formatting, swap 9 for player_id
+            `http://testserver:8000/events/players/${player_id}/`,  // string formatting, swap 9 for player_id
             {
                 headers: {
                     'Authorization': (
@@ -37,7 +37,7 @@ const app = new Vue({
     checkForm: function (e) {
         player_id = localStorage.getItem("player_id")
         axios.put(
-            `http://localhost:8000/events/players/${player_id}/`, {
+            `http://testserver:8000/events/players/${player_id}/`, {
                 first_name: this.first_name,
                 last_name: this.last_name,
                 email: this.email
@@ -51,7 +51,7 @@ const app = new Vue({
           if (this.errored === false) {
           console.log(this.correct)
           this.correct = true}
-      }).then(response => {window.location.href ="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html"})
+      }).then(response => {window.location.href ="players_settings.html"})
       e.preventDefault();
     }
   }

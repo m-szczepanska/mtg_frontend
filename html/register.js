@@ -14,9 +14,9 @@ const app = new Vue({
         console.log(this.email, this.password);
         var query_token = window.location.search
         var token = query_token.slice(7)
-        console.log(`http://localhost:8000/events/register/${token}/`)
+        console.log(`http://testserver:8000/events/register/${token}/`)
         axios.post(
-            `http://localhost:8000/events/register/${token}/`, {
+            `http://testserver:8000/events/register/${token}/`, {
                 first_name: this.first_name,
                 last_name: this.last_name,
                 email: this.email,

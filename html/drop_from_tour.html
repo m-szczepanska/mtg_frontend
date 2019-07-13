@@ -4,15 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/style.css">
+        <title>Current Tours</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <link rel="stylesheet" href="../static/style.css">
-        <title>Send invitation</title>
     </head>
     <body>
-
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-          <a class="navbar-brand" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">MTG Tours </a>
+          <a class="navbar-brand" href="current_tours.html">MTG Tours </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarsExample06" aria-controls="navbarsExample06"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,25 +19,25 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarsExample06">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/create_tournament.html">Create tournament</a>
-              </li>
               <li class="nav-item active">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/invite_player.html">Invite new player</a>
+                <a class="nav-link" href="current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/add_players.html">Add players to tour</a>
+                <a class="nav-link" href="history.html">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="create_tournament.html">Create tournament</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="invite_player.html">Invite new player</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="add_players.html">Add players to tour</a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Profile</a>
+                  <a class="nav-link" href="players_settings.html">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=# onclick="remove_token()" id="logout_link">Logout</a>
@@ -47,35 +46,19 @@
           </div>
         </nav>
 
-        <form class="form-signin"
-          id="app"
-          @submit="checkForm"
-          method="post">
-          <h1 class='invite_player'>Invite player to the MTG Tours</h1>
+        <!-- <form class="row"
+                id="app"
+              @submit="dropPut"
+              method="put">
+            <button type="submit" name="button">
+                Submit
+            </button>
+        </form> -->
 
-          <section class=error v-if="errored">
-            <p>{{ errored }}</p>
-          </section>
-
-          <section class=message v-if="correct">
-            <p>A invitation has been sent</p>
-          </section>
-          <p>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input
-            type="email"
-            id="inputEmail"
-            v-model="email"
-            class="form-control"
-            placeholder="Email address" required autofocus>
-          </p>
-          <button class='btn btn-login' type="submit" name="button">Send</button>
-
-        </form>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="register_request.js"></script>
+        <script src="drop_from_tour.js"></script>
         <script src="logout.js"></script>
-   </body>
+    </body>
 </html>

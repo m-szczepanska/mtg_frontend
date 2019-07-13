@@ -12,7 +12,7 @@ const app = new Vue({
     checkForm: function (e) {
         console.log(this.email);
         axios.post(
-            'http://localhost:8000/events/password_reset_request/',
+            'http://testserver:8000/events/register_request/',
             {email: this.email},
             {headers: {
               'Content-type': 'application/x-www-form-urlencoded',

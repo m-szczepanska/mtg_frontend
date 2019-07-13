@@ -35,7 +35,7 @@ const app = new Vue({
   methods:{
     checkForm: function (e) {
         axios.post(
-            'http://localhost:8000/events/login/',
+            'http://testserver:8000/events/login/',
             {email: this.email, password: this.password},
             {headers: {
               'Content-type': 'application/x-www-form-urlencoded',

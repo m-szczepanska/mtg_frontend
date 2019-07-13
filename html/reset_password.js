@@ -10,9 +10,9 @@ const app = new Vue({
     checkForm: function (e) {
         var query_token = window.location.search
         var token = query_token.slice(7)
-        console.log(`http://localhost:8000/events/password_reset/${token}/`)
+        console.log(`http://testserver:8000/events/password_reset/${token}/`)
         axios.post(
-            `http://localhost:8000/events/password_reset/${token}/`, {
+            `http://testserver:8000/events/password_reset/${token}/`, {
                 password: this.password,
                 password_repeat: this.password_repeat
             },

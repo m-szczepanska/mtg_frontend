@@ -13,7 +13,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-          <a class="navbar-brand" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">MTG Tours </a>
+          <a class="navbar-brand" href="current_tours.html">MTG Tours </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarsExample06" aria-controls="navbarsExample06"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -22,24 +22,24 @@
           <div class="collapse navbar-collapse" id="navbarsExample06">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="current_tours.html">Current tournaments<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/history.html">History</a>
+                <a class="nav-link" href="history.html">History</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/create_tournament.html">Create tournament</a>
+                <a class="nav-link" href="create_tournament.html">Create tournament</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="invite_player.html">Invite new player</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/add_players.html">Add players to tour</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/invite_player.html">Invite new player</a>
+                <a class="nav-link" href="add_players.html">Add players to tour</a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="file:///Users/marsza/workspace/mtg_frontend/html:js/players_settings.html">Profile</a>
+                  <a class="nav-link" href="players_settings.html">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=# onclick="remove_token()" id="logout_link">Logout</a>
@@ -62,24 +62,21 @@
                       <p>Changes have been saved</p>
                     </section>
 
+                    <h1 class=form-add-players-h1>Add players to a tournament</h1>
                     <p>Select tournament<p>
                         <v-select
                             v-model="tournament"
                             :options="tournaments"
                             :reduce="name => name.id"
                             label="name"></v-select>
-                    <!-- <p>Select tournament<p>
-                    <select class="form-control" id="FormControlSelect1">
-                        <option v-for="tour in tournaments">{{tour.name}}</option>
-                    </select> -->
 
-                    <p>Select players to add to tournament<p>
+                    <p>Select players to add<p>
                         <v-select multiple
                         v-model="player_ids"
                         :options="players"
                         :reduce="full_name => full_name.id"
                         label="full_name"></v-select>
-                    <button class="btn-save btn btn-primary btn-sm">Save</button>
+                    <button class='btn btn-login'>Save</button>
                 </form>
 
             </div>

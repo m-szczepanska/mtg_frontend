@@ -34,10 +34,10 @@ new Vue({
       const tour_id = urlParams.get('tour_id');
       const match_id = urlParams.get('match_id');
 
-      console.log(`http://localhost:8000/events/tournaments/${tour_id}/matches/${match_id}`)
+      console.log(`http://testserver:8000/events/tournaments/${tour_id}/matches/${match_id}`)
       axios
         .get(
-            `http://localhost:8000/events/tournaments/${tour_id}/matches/${match_id}`,
+            `http://testserver:8000/events/tournaments/${tour_id}/matches/${match_id}`,
             {
                 headers: {
                     'Authorization': (
@@ -67,9 +67,9 @@ new Vue({
 },
   methods: {
     submitScore: function (e) {
-        console.log(`http://localhost:8000/events/tournaments/${this.tour_id}/matches/${this.match_id}/`)
+        console.log(`http://testserver:8000/events/tournaments/${this.tour_id}/matches/${this.match_id}/`)
         axios.put(
-            `http://localhost:8000/events/tournaments/${this.tour_id}/matches/${this.match_id}/`,
+            `http://testserver:8000/events/tournaments/${this.tour_id}/matches/${this.match_id}/`,
             {
                     player_1_score: this.player_1_score,
                     player_2_score: this.player_2_score,
@@ -80,7 +80,7 @@ new Vue({
                     'Authorization': String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token"),
             }
           }
-      ).then(response => {window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/current_round_details.html?tour_id=${this.tour_id}`}
+      ).then(response => {window.location.href =`current_round_details.html?tour_id=${this.tour_id}`}
       ).catch((error) => {
           if (error.response) {
               console.log(error.response.data);

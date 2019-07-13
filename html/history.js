@@ -21,10 +21,10 @@ new Vue({
   mounted () {
       player_id = localStorage.getItem("player_id")
 
-      console.log(`http://localhost:8000/events/players/${player_id}/player_history/`)
+      console.log(`http://testserver:8000/events/players/${player_id}/player_history/`)
       axios
         .get(
-            `http://localhost:8000/events/players/${player_id}/player_history/`,  // string formatting, swap 9 for player_id
+            `http://testserver:8000/events/players/${player_id}/player_history/`,  // string formatting, swap 9 for player_id
             {
                 headers: {
                     'Authorization': String(localStorage.getItem("player_id")) + ':' + localStorage.getItem("token")
@@ -32,7 +32,7 @@ new Vue({
             }
         ).then(response => {(this.info = response.data), console.log(response)}
         ).then(response => {var reply_click = function() {
-                window.location.href =`file:///Users/marsza/workspace/mtg_frontend/html:js/tour_details.html?tour_id=${this.id}`}
+                window.location.href =`tour_details.html?tour_id=${this.id}`}
                 var buttons = document.querySelectorAll(".btn")
                 for (i = 0; i < buttons.length; i++) {
                     buttons[i].onclick = reply_click;
